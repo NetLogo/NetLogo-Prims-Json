@@ -5,7 +5,7 @@ import java.net.{ URL, URLClassLoader }
 import java.nio.file.{ Files, Path, Paths }
 
 import org.nlogo.api.PrimitiveManager
-import org.nlogo.core.{ Primitive, TypeNames }
+import org.nlogo.core.{ Primitive, Syntax }
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -45,10 +45,44 @@ object PrimsJson {
 
           Obj(
             "name" -> name,
-            "argTypes" -> syntax.right.map(TypeNames.name).toBuffer,
-            "returnType" -> TypeNames.name(syntax.ret)
+            "argTypes" -> syntax.right.map(getTypeName).toBuffer,
+            "returnType" -> getTypeName(syntax.ret)
           )
       }
     ), 2) + "\n")
+  }
+
+  private def getTypeName(tpe: Int): String = {
+    tpe match {
+      case Syntax.NumberType => "number"
+      case Syntax.BooleanType => "boolean"
+      case Syntax.StringType => "string"
+      case Syntax.ListType => "list"
+      case Syntax.TurtlesetType => "turtleset"
+      case Syntax.PatchsetType => "patchset"
+      case Syntax.LinksetType => "linkset"
+      case Syntax.AgentsetType => "agentset"
+      case Syntax.NobodyType => "nobody"
+      case Syntax.TurtleType => "turtle"
+      case Syntax.PatchType => "patch"
+      case Syntax.LinkType => "link"
+      case Syntax.CommandType => "command"
+      case Syntax.ReporterType => "reporter"
+      case Syntax.AgentType => "agent"
+      case Syntax.ReadableType => "readable"
+      case Syntax.WildcardType => "wildcard"
+      case Syntax.ReferenceType => "reference"
+      case Syntax.CommandBlockType => "commandblock"
+      case Syntax.BooleanBlockType => "booleanblock"
+      case Syntax.NumberBlockType => "numberblock"
+      case Syntax.OtherBlockType => "otherblock"
+      case Syntax.ReporterBlockType => "reporterblock"
+      case Syntax.BracketedType => "bracketed"
+      case Syntax.RepeatableType => "repeatable"
+      case Syntax.OptionalType => "optional"
+      case Syntax.CodeBlockType => "codeblock"
+      case Syntax.SymbolType => "symbol"
+      case unk => throw new Exception(s"Unknown type: $unk")
+    }
   }
 }

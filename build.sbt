@@ -12,7 +12,7 @@ resolvers += "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven
 
 libraryDependencies ++= Seq(
   "org.nlogo" % "netlogo" % "7.0.3",
-  "org.jogamp.jogl" % "jogl-all" % "2.4.0" from "https://jogamp.org/deployment/archive/rc/v2.4.0/jar/jogl-all.jar",
-  "org.jogamp.gluegen" % "gluegen-rt" % "2.4.0" from "https://jogamp.org/deployment/archive/rc/v2.4.0/jar/gluegen-rt.jar",
+  "org.jogamp.jogl" % "jogl-all" % "2.4.0" from "https://s3.amazonaws.com/ccl-artifacts/jogl-all-2.4.0.jar",
+  "org.jogamp.gluegen" % "gluegen-rt" % "2.4.0" from "https://s3.amazonaws.com/ccl-artifacts/gluegen-rt-2.4.0.jar",
   "com.lihaoyi" %% "ujson" % "4.4.1"
 )
