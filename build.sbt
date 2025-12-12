@@ -1,7 +1,7 @@
 name := "netlogo-prims-json"
 organization := "org.nlogo"
 licenses += ("Creative Commons Zero v1.0 Universal Public Domain Dedication", url("https://creativecommons.org/publicdomain/zero/1.0/"))
-version := "1.0.0"
+version := "0.1.0"
 isSnapshot := true
 publishTo := { Some("Cloudsmith API" at "https://maven.cloudsmith.io/netlogo/netlogo-prims-json/") }
 
